@@ -54,9 +54,11 @@ nodes遍历, 过滤出elements
 
 ## fragment
 
-根据Rang拆分出Node下的Fragment
+根据Rang拆分出Node下的Fragment, Rang必须包含到叶子节点
 
-1. 
+PR: 二次判定Range.includes(range, path)是否PERF
+
+PR: 整个算法有性能优化空间
 
 ## get
 
@@ -99,7 +101,7 @@ PS: 是否有必要判定Text
 1. 有传递from/to 并不影响他从Root开始遍历
 2. to要求节点必须在他之前
 3. form要求节点从根走到from的分叉开始
-4. pass会跳过某个节点以及他的所有子树
+4. pass允许设置条件，限制往下一级遍历，条件发生于往下层走的时候
 
 PR: 为什么会允许遍历出[]?
 
