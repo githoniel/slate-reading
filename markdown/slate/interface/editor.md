@@ -31,17 +31,51 @@ return editor
 
 ## API
 
+### above
+
+获取父节点
+
+PS: 注意默认mode=lowest选取最近节点
+
+### addMark
+
+按照注释行为实现，但是此处为空
+
+### after
+
+一个位置后distance XX的point，注意是point
+
+### deleteBackward
+
+空实现
+
+### deleteForward
+
+空实现
+
+### deleteFragment
+
+空实现
+
+### edges/end/first/fragment/hasBlocks/hasInlines/hasTexts/isBlock/isEditor/isEnd/isEdge/isInline/isStart
+
+RT
+
+### insertBreak/insertFragment/insertNode/insertText
+
+空实现
+
 ### isEmpty
 
+注意只针对Element做判断，TextNode不算在内
+
+如果只有一个子节点而且子节点文本内容是空也是允许的
 
 
 ###  isNormalizing
 
 是否在isNormalizing
 
-### isStart
-
-// TODO
 
 ### isVoid/isInline
 
@@ -61,11 +95,16 @@ location获取leaf节点
 
 ### marks
 
-// TODO
+获取给当前选取下即将输入的内容的Mark样式
+
+1. 选取展开的情况的下，直接取选区的第一个Text节点的属性
+2. 未展开情况要考虑hang选区，offset != 0 则是当前point所在的叶子节点
+3. 2未满足，寻找上一个Text节点和上级block节点，要求是同一个块内的Text节点，则选择该Text节点
+
 
 ### next
 
-// TODO
+获取location下一个节点
 
 ### node
 
@@ -73,11 +112,13 @@ location获取leaf节点
 
 ### nodes
 
-// TODO
+universal要求全branch都有输出
 
 ### normalize
 
-// TODO
+normalize Node，依赖外部实现
+
+PR: 一次最多处理42个path否则报错
 
 ### parent
 
@@ -161,7 +202,7 @@ PR: CHAMELEON只包含英文引号
 
 ## previous
 
-//TODO
+寻找上一个节点
 
 PR: 测试案例太简单
 
